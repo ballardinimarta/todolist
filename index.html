@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-List</title>
+
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Att göra lista!</h1>
+        <form>
+            <input id="newcontent" type="text" placeholder="Ny uppgift som måste göras!" required>
+            <button id="addnewcontent" type="button">Lägg till!</button>
+        </form>
+
+        <div id="filter">
+            <div id= "openMenu">
+                <span>Filtrera</span>
+            </div>
+            <div id="dropdownFilter" class="closed">
+                <button type="button" id="standard" class="filterButtons">Standard</button>
+                <button type="button" id="checked" class="filterButtons">Checked</button>
+                <button type="button" id="undone" class="filterButtons">Undone</button>
+                <button type="button" id="removed" class="filterButtons">Removed</button>
+            </div>
+        </div>
+        <ul id="myTodoList" class="list">
+        </ul>
+    
+        
+    </div>
+  
+</body>
+</html>
