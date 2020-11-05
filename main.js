@@ -4,6 +4,7 @@ window.onload = function () {
     filter();
 }
 let removedItems = [];
+let todoItems = [];
 
 
 function addItems (content) {
@@ -22,6 +23,8 @@ function addItems (content) {
     todolist.appendChild(li);
     li.appendChild(btn);
 
+    todoItems.push(li);
+
     li.addEventListener('click', function() {
         li.classList.toggle("Checked");
     })
@@ -38,7 +41,7 @@ function addItems (content) {
 }
 
 function todoStart () {
-    let todos = ["Handla", "Tvätta", "Göra läxor"];
+    let todos = ["handla", "tvätta", "göra läxor", "gå till frisören"];
     for (let i = 0; i < todos.length; i++) {
         let todo = todos[i];
         addItems(todo);
@@ -57,7 +60,6 @@ function filter() {
     let checkedbtn = document.getElementById("checked");
     let removedbtn = document.getElementById("removed");
 
-
     filterBtn.addEventListener('click', function () {
         let openBtn = document.getElementById('dropdownFilter');
         if (openBtn.className == 'closed') {
@@ -67,17 +69,75 @@ function filter() {
         }
     })
 
-    standardbtn.addEventListener('click', function() {        
-    })
+    standardbtn.addEventListener('click', standardFilter)
 
-    undonebtn.addEventListener('click', function() {})
+    checkedbtn.addEventListener('click', checkedFilter)
 
-    checkedbtn.addEventListener('click', function() {})
+    undonebtn.addEventListener('click', undoneFilter)
 
-    removedbtn.addEventListener('click', function() {})
+    removedbtn.addEventListener('click', removedFilter)
 
 
 }
+function standardFilter () {   
+    let lis = document.getElementsByTagName("li");
+    for (let i = 0; i < lis.length; i++) {
+        let li = lis[i];
+        if (removedItems.includes(li)) {
+            li.style.display = "none";
+        } else {
+            li.style.display = "flex";
+        }
+    }
+}
+
+function checkedFilter () {
+    let lis = document.getElementsByTagName("li");
+    for (let i = 0; i < lis.length; i++) {
+        let li = lis[i];
+        if (!li.classList.contains("Checked") || removedItems.includes(li)) {
+            li.style.display = "none";
+
+        } else {
+            li.style.display = "flex";
+
+        }
+    }
+}
+
+function undoneFilter () {
+    let lis = document.getElementsByTagName("li");
+    for (let i = 0; i < lis.length; i++) {
+        let li = lis[i];
+        if (li.classList.contains("Checked") || removedItems.includes(li)) {
+            li.style.display = "none";
+        } else {
+            li.style.display = "flex";
+        }
+        
+    }
+}
+
+function removedFilter () {
+    let lis = document.getElementsByTagName("li");
+    for (let i = 0; i < lis.length; i++) {
+        let li = lis[i];
+        if (li.classList.contains("listItem") && removedItems.includes(li)) {
+            li.style.display = "flex";
+        } else {
+            li.style.display = "none";
+        }
+    }
+    let todolist = document.getElementById('myTodoList');
+    for (let i = 0; i < removedItems.length; i++) {
+        removedItem = removedItems[i];
+        todolist.appendChild(removedItem);
+
+    }
+}
+
+
+
 
 
 
