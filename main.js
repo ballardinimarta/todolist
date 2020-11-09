@@ -12,32 +12,60 @@ function addItems (content) {
 
     let li = document.createElement("li");
     let btn = document.createElement("button");
+    if (content != "") {
+        btn.innerHTML = "&#10005;";
+        btn.type = "button";
+        btn.className = "removeListItem";
+    
+        li.innerHTML = content;
+        li.className = "listItem";
+    
+        todolist.appendChild(li);
+        li.appendChild(btn);
+    
+        todoItems.push(li);
+    
+        li.addEventListener('click', function() {
+            li.classList.toggle("Checked");
+        })
+        btn.addEventListener('click', function() {
+            let removedItem = btn.parentElement;
 
-    btn.innerHTML = "&#10005;";
-    btn.type = "button";
-    btn.className = "removeListItem";
+            removedItem.classList.toggle("Checked");
+    
+            removedItem.remove();
 
-    li.innerHTML = content;
-    li.className = "listItem";
+            removedItem.removeChild(removedItem.lastChild);
+            
+            let reversebtn = document.createElement("button");
+            reversebtn.innerHTML = "&#8617;";
+            reversebtn.className = "reverseListItem";
+            removedItem.appendChild(reversebtn);
+    
+            removedItems.push(removedItem);
 
-    todolist.appendChild(li);
-    li.appendChild(btn);
+            reversebtn.addEventListener('click', function () {
+                removedItem.classList.toggle("Checked");
+                let reverseItem = reversebtn.parentElement;
+                reverseItem.removeChild(reverseItem.lastChild);
 
-    todoItems.push(li);
+                reverseItem.appendChild(btn);
 
-    li.addEventListener('click', function() {
-        li.classList.toggle("Checked");
-    })
-    btn.addEventListener('click', function() {
-        let removedItem = btn.parentElement;
+                reverseItem.classList.remove("removed");
 
-        removedItem.remove();
+                let index = removedItems.indexOf(reverseItem);
+                if (index > -1) {
+                    removedItems.splice(index, 1);
+                }
 
-        removedItems.push(removedItem);
-
-        console.log(removedItems)
-    })
-
+                standardFilter();
+            })
+            console.log(removedItems);
+        })
+    } else {
+        alert("Du behöver skriva in något i textrutan för att lägga till en ny uppgift!");
+    }
+    
 }
 
 function todoStart () {
@@ -131,8 +159,8 @@ function removedFilter () {
     let todolist = document.getElementById('myTodoList');
     for (let i = 0; i < removedItems.length; i++) {
         removedItem = removedItems[i];
+        removedItem.classList.add("removed");
         todolist.appendChild(removedItem);
-
     }
 }
 

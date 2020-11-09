@@ -1,22 +1,31 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #E4E3D3;
     font-size: 20px;
+    color: #454545;
 }
-h1 {
-    color: rgb(46, 46, 46);
-    
-}
+
+/* WRAPPERS */
 #wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+#ulWrapper {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* TODOLIST */
 #myTodoList {
     list-style-type: none;
-    margin: 0;
+    margin: 20px 0;
     padding: 0px;
-    width: 50%;
+    width: 90%;
 }
 
 .listItem {
@@ -26,9 +35,9 @@ h1 {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    background-color: rgb(212, 212, 252);
-    padding: 10px;
-    border: 2px solid rgb(170, 160, 187);
+    background-color:#7F9172;
+    color: #FFF8F0;
+    padding: 20px;
     margin: 3px;
     position: relative;
     text-transform: capitalize;
@@ -36,27 +45,10 @@ h1 {
 
 }
 .Checked {
-    color: rgba(0, 0, 0, 0.137);
+    color: #FFF8F0;
     text-decoration: line-through;
-    background-color:  rgb(170, 160, 187);
+    background-color:  #454545;
 
-}
-form {
-    width: 50%;
-}
-
-#newcontent {
-    padding: 10px;
-    width: 80%;
-    margin: 3px;
-}
-
-#addnewcontent {
-    padding: 10px;
-    width: 14%;
-    background-color: rgb(170, 160, 187);
-    border: 2px solid rgb(170, 160, 187);
-    border-radius: 2px;
 }
 
 .removeListItem {
@@ -66,32 +58,93 @@ form {
     right: 10px;
 }
 
+.reverseListItem {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 10px;
+}
+
+.removed {
+    background-color: rgb(156, 53, 84);
+}
+
+/* FORM FOR ADDING NEW ITEMS */
+form {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#newcontent {
+    padding: 18px;
+    width: 90%;
+    margin: 3px;
+    background-color: #FFF8F0;
+    border: none;
+    border-radius: 2px;
+    font-size: 75%;
+
+
+}
+
+#addnewcontent {
+    padding: 17px;
+    width: 10%;
+    background-color:#454545;
+    color: #FFF8F0;
+    border-radius: 2px;
+    border: none;
+
+}
+
+
+/* FILTERMENU */
 #filter {
-    width: 50%;
+    margin: 20px 10px;
+    width: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: rgb(211, 204, 224);
-    margin: 5px;
-    padding: 10px;
-    border: 2px solid rgba(0, 0, 0, 0.315);
+    justify-content: space-evenly;
+}
 
+#openMenu {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:#454545;
+    color: #FFF8F0;
+    margin: 3px 0;
+    font-size: 90%;
+    border: none;
+    padding: 10px;
+    width: 90px;
+    
 }
 .closed {
     display: none;
     
 }
 .opened {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    margin: 0;
 }
-.filterButtons {
-    background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.315);
-    margin: 2px;
-    font-size: 90%;
 
+.filterButtons {
+    background-color:#454545;
+    color: #FFF8F0;
+    margin: 3px 0;
+    font-size: 90%;
+    border: none;
+    padding: 10px;
+    width: 100%;
+
+}
+.filterButtons:focus {
+    background-color: #E2A0FF;
+    outline: 0;
 }
