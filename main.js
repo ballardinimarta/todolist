@@ -9,6 +9,7 @@ let todoItems = [];
 
 function addItems (content) {
     let todolist = document.getElementById('myTodoList');
+    let inputfield = document.getElementById('newcontent');
 
     let li = document.createElement("li");
     let btn = document.createElement("button");
@@ -24,7 +25,7 @@ function addItems (content) {
         li.appendChild(btn);
     
         todoItems.push(li);
-    
+        
         li.addEventListener('click', function() {
             li.classList.toggle("Checked");
         })
@@ -65,6 +66,7 @@ function addItems (content) {
     } else {
         alert("Du behöver skriva in något i textrutan för att lägga till en ny uppgift!");
     }
+    inputfield.value = "";
     
 }
 
@@ -77,7 +79,7 @@ function todoStart () {
 }
 function addListItemsOnClick () {
     let addnewcontentbtn = document.getElementById('addnewcontent');
-    addnewcontentbtn.addEventListener('click', () => { addItems(document.getElementById('newcontent').value); }) 
+    addnewcontentbtn.addEventListener('click', () => { addItems(document.getElementById('newcontent').value); })   
 }
 
 
