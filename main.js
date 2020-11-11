@@ -1,3 +1,11 @@
+class Todo{
+        constructor(content, checked, removed) {
+            this.content = content;
+            this.checked = checked;
+            this.removed = removed;
+        }
+}
+
 window.onload = function () {
     todoStart();
     addListItemsOnClick();
@@ -23,16 +31,28 @@ function addItems (content) {
     
         todolist.appendChild(li);
         li.appendChild(btn);
-    
-        todoItems.push(li);
+        let todo = new Todo(content, false, false)
+        todoItems.push(todo);
         
         li.addEventListener('click', function() {
             li.classList.toggle("Checked");
+            if (todo.checked == false) {
+                todo.checked = true;
+            } else {
+                todo.checked = false;
+            }
         })
         btn.addEventListener('click', function() {
+            todo.removed = true;
+
             let removedItem = btn.parentElement;
 
             removedItem.classList.toggle("Checked");
+            if (todo.checked == false) {
+                todo.checked = true;
+            } else {
+                todo.checked = false;
+            }
     
             removedItem.remove();
 
@@ -47,12 +67,19 @@ function addItems (content) {
 
             reversebtn.addEventListener('click', function () {
                 removedItem.classList.toggle("Checked");
+                if (todo.checked == false) {
+                    todo.checked = true;
+                } else {
+                    todo.checked = false;
+                }
+                
                 let reverseItem = reversebtn.parentElement;
                 reverseItem.removeChild(reverseItem.lastChild);
 
                 reverseItem.appendChild(btn);
 
                 reverseItem.classList.remove("removed");
+                todo.removed = false;
 
                 let index = removedItems.indexOf(reverseItem);
                 if (index > -1) {
@@ -61,22 +88,25 @@ function addItems (content) {
 
                 standardFilter();
             })
-            console.log(removedItems);
         })
     } else {
         alert("Du behöver skriva in något i textrutan för att lägga till en ny uppgift!");
     }
     inputfield.value = "";
+    console.log(todoItems);
     
 }
 
 function todoStart () {
+
     let todos = ["handla", "tvätta", "göra läxor", "gå till frisören"];
     for (let i = 0; i < todos.length; i++) {
         let todo = todos[i];
         addItems(todo);
     }
 }
+
+
 function addListItemsOnClick () {
     let addnewcontentbtn = document.getElementById('addnewcontent');
     addnewcontentbtn.addEventListener('click', () => { addItems(document.getElementById('newcontent').value); })   
@@ -165,6 +195,7 @@ function removedFilter () {
         todolist.appendChild(removedItem);
     }
 }
+console.log(removedItems);
 
 
 
