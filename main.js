@@ -6,14 +6,15 @@ class Todo{
         }
 }
 
+let removedItems = [];
+let todoItems = [];
+
 window.onload = function () {
     todoStart();
     addListItemsOnClick();
     filter();
     sort();
 }
-let removedItems = [];
-let todoItems = [];
 
 
 function addItems (content) {
@@ -22,6 +23,7 @@ function addItems (content) {
 
     let li = document.createElement("li");
     let btn = document.createElement("button");
+
     if (content != "") {
         btn.innerHTML = "&#10005;";
         btn.type = "button";
@@ -32,6 +34,7 @@ function addItems (content) {
     
         todolist.appendChild(li);
         li.appendChild(btn);
+
         let todo = new Todo(content, false, false)
         todoItems.push(todo);
         
@@ -197,6 +200,7 @@ function removedFilter () {
         todolist.appendChild(removedItem);
     }
 }
+
 function sort () {
     document.getElementById("sort").addEventListener('click', sortTodos);
 }
@@ -217,10 +221,8 @@ function sortTodos () {
     
     for (let i = 0; i <lisArray.length; i++) {
         let li = lisArray[i];
-        console.log(li);
         list.appendChild(li);
-    }
-       
+    }       
 }
 
 
