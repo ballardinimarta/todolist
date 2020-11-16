@@ -109,6 +109,7 @@ body {
           background-color: #E2A0FF;
           outline: 0; }
         body #wrapper #ulWrapper #filter #sort {
+          cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
