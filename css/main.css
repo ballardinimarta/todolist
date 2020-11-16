@@ -98,7 +98,7 @@ body {
             body #wrapper #ulWrapper #filter .opened {
               font-size: 60%; } }
         body #wrapper #ulWrapper #filter .filterButtons {
-          background-color: #454545;
+          background-color: #4545459f;
           color: #FFF8F0;
           margin: 3px 0;
           font-size: 90%;
@@ -108,6 +108,20 @@ body {
         body #wrapper #ulWrapper #filter .filterButtons:focus {
           background-color: #E2A0FF;
           outline: 0; }
+        body #wrapper #ulWrapper #filter #sort {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #454545;
+          color: #FFF8F0;
+          margin: 3px 0;
+          font-size: 90%;
+          border: none;
+          padding: 10px;
+          width: 90%; }
+          @media screen and (max-width: 1024px) {
+            body #wrapper #ulWrapper #filter #sort {
+              width: 125%; } }
       body #wrapper #ulWrapper #myTodoList {
         list-style-type: none;
         margin: 20px 0;

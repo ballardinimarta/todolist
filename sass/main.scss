@@ -49,6 +49,7 @@ body {
                 padding: 11px;
             } 
         }
+
         
         #ulWrapper {
             width: 80%;
@@ -119,7 +120,7 @@ body {
                 }
                 
                 .filterButtons {
-                    background-color:#454545;
+                    background-color:#4545459f;
                     color: #FFF8F0;
                     margin: 3px 0;
                     font-size: 90%;
@@ -132,7 +133,23 @@ body {
                     background-color: #E2A0FF;
                     outline: 0;
                 }
+                #sort {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color:#454545;
+                    color: #FFF8F0;
+                    margin: 3px 0;
+                    font-size: 90%;
+                    border: none;
+                    padding: 10px;
+                    width: 90%;
+                    @include tablet {
+                        width: 125%;
+                    }
+                }
             }
+
 
 
             #myTodoList {

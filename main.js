@@ -10,6 +10,7 @@ window.onload = function () {
     todoStart();
     addListItemsOnClick();
     filter();
+    sort();
 }
 let removedItems = [];
 let todoItems = [];
@@ -93,15 +94,13 @@ function addItems (content) {
         alert("Du behöver skriva in något i textrutan för att lägga till en ny uppgift!");
     }
     inputfield.value = "";
-    console.log(todoItems);
     
 }
 
 function todoStart () {
-
-    let todos = ["handla", "tvätta", "göra läxor", "gå till frisören"];
-    for (let i = 0; i < todos.length; i++) {
-        let todo = todos[i];
+    let todoString = ["handla", "tvätta", "göra läxor", "gå till frisören"];
+    for (let i = 0; i < todoString.length; i++) {
+        let todo = todoString[i];
         addItems(todo);
     }
 }
@@ -141,8 +140,11 @@ function filter() {
 }
 function standardFilter () {   
     let lis = document.getElementsByTagName("li");
+    
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
+        
+
         if (removedItems.includes(li)) {
             li.style.display = "none";
         } else {
@@ -195,7 +197,32 @@ function removedFilter () {
         todolist.appendChild(removedItem);
     }
 }
-console.log(removedItems);
+function sort () {
+    document.getElementById("sort").addEventListener('click', sortTodos);
+}
+function sortTodos () {
+    let list = document.getElementById("myTodoList");
+    let lis = list.getElementsByTagName("LI");
+    var lisArray = Array.from(lis);
+
+
+    lisArray.sort(function(a, b){
+        var x = a.innerHTML.toLowerCase();
+        var y = b.innerHTML.toLowerCase();
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;
+      });
+    list.innerHTML = " ";
+    
+    for (let i = 0; i <lisArray.length; i++) {
+        let li = lisArray[i];
+        console.log(li);
+        list.appendChild(li);
+    }
+       
+}
+
 
 
 
