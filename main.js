@@ -16,7 +16,7 @@ window.onload = function () {
     filterMenu();
     sortButton();
 }
-// en function för att checka som används 3 gånger
+// en funktion för att todos ej ska bli avcheckade när dom blir borttagna eller reversed
 function checkChecked (todo) {
     if (todo.checked == false) {
         todo.checked = true;
@@ -25,7 +25,7 @@ function checkChecked (todo) {
     }
 }
 
-// funktionen för att lägga till ett li elemnt i min ul
+// funktionen för att lägga till ett li element i min ul
 function addItems (content) {
     let todoList = document.getElementById('myTodoList');
     let inputfield = document.getElementById('newContent');

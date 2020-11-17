@@ -5,7 +5,6 @@
 Detta är min första inlämningsuppgift i kursen javascriptgrundkurs som jag har nu. 
 
 ### Uppgiften: ###
-
 I uppgiften ska vi göra en Todo-Lista, som ska ha olika funktioner.
 Den ska kunna ta bort en todo, checka av en todo, kunna sortera listan av todos och kunna lägga till ny todo.
 
