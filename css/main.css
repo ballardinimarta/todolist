@@ -147,7 +147,7 @@ body {
           @media screen and (max-width: 768px) {
             body #wrapper #ulWrapper #myTodoList .listItem {
               padding: 17px; } }
-        body #wrapper #ulWrapper #myTodoList .Checked {
+        body #wrapper #ulWrapper #myTodoList .checked {
           color: #FFF8F0;
           text-decoration: line-through;
           background-color: #454545; }

@@ -10,16 +10,16 @@ let removedItems = [];
 let todoItems = [];
 
 window.onload = function () {
-    todoStart();
+    todoStartSetup();
     addListItemsOnClick();
-    filter();
-    sort();
+    filterMenu();
+    sortButton();
 }
 
 
 function addItems (content) {
     let todolist = document.getElementById('myTodoList');
-    let inputfield = document.getElementById('newcontent');
+    let inputfield = document.getElementById('newContent');
 
     let li = document.createElement("li");
     let btn = document.createElement("button");
@@ -39,7 +39,7 @@ function addItems (content) {
         todoItems.push(todo);
         
         li.addEventListener('click', function() {
-            li.classList.toggle("Checked");
+            li.classList.toggle("checked");
             if (todo.checked == false) {
                 todo.checked = true;
             } else {
@@ -51,7 +51,7 @@ function addItems (content) {
 
             let removedItem = btn.parentElement;
 
-            removedItem.classList.toggle("Checked");
+            removedItem.classList.toggle("checked");
             if (todo.checked == false) {
                 todo.checked = true;
             } else {
@@ -62,22 +62,22 @@ function addItems (content) {
 
             removedItem.removeChild(removedItem.lastChild);
             
-            let reversebtn = document.createElement("button");
-            reversebtn.innerHTML = "&#8617;";
-            reversebtn.className = "reverseListItem";
-            removedItem.appendChild(reversebtn);
+            let reverseBtn = document.createElement("button");
+            reverseBtn.innerHTML = "&#8617;";
+            reverseBtn.className = "reverseListItem";
+            removedItem.appendChild(reverseBtn);
     
             removedItems.push(removedItem);
 
-            reversebtn.addEventListener('click', function () {
-                removedItem.classList.toggle("Checked");
+            reverseBtn.addEventListener('click', function () {
+                removedItem.classList.toggle("checked");
                 if (todo.checked == false) {
                     todo.checked = true;
                 } else {
                     todo.checked = false;
                 }
                 
-                let reverseItem = reversebtn.parentElement;
+                let reverseItem = reverseBtn.parentElement;
                 reverseItem.removeChild(reverseItem.lastChild);
 
                 reverseItem.appendChild(btn);
@@ -92,15 +92,18 @@ function addItems (content) {
 
                 standardFilter();
             })
+
         })
     } else {
         alert("Du behöver skriva in något i textrutan för att lägga till en ny uppgift!");
     }
     inputfield.value = "";
+    console.log(todoItems);
+
     
 }
 
-function todoStart () {
+function todoStartSetup () {
     let todoString = ["handla", "tvätta", "göra läxor", "gå till frisören"];
     for (let i = 0; i < todoString.length; i++) {
         let todo = todoString[i];
@@ -110,17 +113,17 @@ function todoStart () {
 
 
 function addListItemsOnClick () {
-    let addnewcontentbtn = document.getElementById('addnewcontent');
-    addnewcontentbtn.addEventListener('click', () => { addItems(document.getElementById('newcontent').value); })   
+    let addNewContentBtn = document.getElementById('addNewContent');
+    addNewContentBtn.addEventListener('click', () => { addItems(document.getElementById('newContent').value); })   
 }
 
 
-function filter() {
+function filterMenu() {
     let filterBtn = document.getElementById('openMenu');
-    let standardbtn = document.getElementById("standard");
-    let undonebtn = document.getElementById("undone");
-    let checkedbtn = document.getElementById("checked");
-    let removedbtn = document.getElementById("removed");
+    let standardBtn = document.getElementById("standard");
+    let checkedBtn = document.getElementById("checked");
+    let undoneBtn = document.getElementById("undone");
+    let removedBtn = document.getElementById("removed");
 
     filterBtn.addEventListener('click', function () {
         let openBtn = document.getElementById('dropdownFilter');
@@ -131,13 +134,13 @@ function filter() {
         }
     })
 
-    standardbtn.addEventListener('click', standardFilter)
+    standardBtn.addEventListener('click', standardFilter)
 
-    checkedbtn.addEventListener('click', checkedFilter)
+    checkedBtn.addEventListener('click', checkedFilter)
 
-    undonebtn.addEventListener('click', undoneFilter)
+    undoneBtn.addEventListener('click', undoneFilter)
 
-    removedbtn.addEventListener('click', removedFilter)
+    removedBtn.addEventListener('click', removedFilter)
 
 
 }
@@ -146,7 +149,6 @@ function standardFilter () {
     
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
-        
 
         if (removedItems.includes(li)) {
             li.style.display = "none";
@@ -160,7 +162,7 @@ function checkedFilter () {
     let lis = document.getElementsByTagName("li");
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
-        if (!li.classList.contains("Checked") || removedItems.includes(li)) {
+        if (!li.classList.contains("checked") || removedItems.includes(li)) {
             li.style.display = "none";
 
         } else {
@@ -174,7 +176,7 @@ function undoneFilter () {
     let lis = document.getElementsByTagName("li");
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
-        if (li.classList.contains("Checked") || removedItems.includes(li)) {
+        if (li.classList.contains("checked") || removedItems.includes(li)) {
             li.style.display = "none";
         } else {
             li.style.display = "flex";
@@ -201,27 +203,28 @@ function removedFilter () {
     }
 }
 
-function sort () {
+function sortButton () {
     document.getElementById("sort").addEventListener('click', sortTodos);
 }
+
 function sortTodos () {
-    let list = document.getElementById("myTodoList");
-    let lis = list.getElementsByTagName("LI");
-    var lisArray = Array.from(lis);
+    let todoList = document.getElementById("myTodoList");
+    let lis = todoList.getElementsByTagName("LI");
+    var liArray = Array.from(lis);
 
 
-    lisArray.sort(function(a, b){
+    liArray.sort(function(a, b){
         var x = a.innerHTML.toLowerCase();
         var y = b.innerHTML.toLowerCase();
         if (x < y) {return -1;}
         if (x > y) {return 1;}
         return 0;
       });
-    list.innerHTML = " ";
+    todoList.innerHTML = " ";
     
-    for (let i = 0; i <lisArray.length; i++) {
-        let li = lisArray[i];
-        list.appendChild(li);
+    for (let i = 0; i <liArray.length; i++) {
+        let sortedLi = liArray[i];
+        todoList.appendChild(sortedLi);
     }       
 }
 
