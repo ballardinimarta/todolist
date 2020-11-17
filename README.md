@@ -17,6 +17,7 @@ Den ska kunna ta bort en todo, checka av en todo, kunna sortera listan av todos 
 
 ### Struktur: ###
 
-* Jag använder mig av camelCase för att namnge mina variablar
+* Jag använder mig av camelCase för att namnge mina variablar och funktioner tex. `addTask();` eller `todoList`
+* Jag använder mig av SCSS för att skriva min css, sedan använder jag mig av gulp för att uppdatera och minifiera den.
 * CSS filen som används i *index.html* är *dist/main.min.css* som är den minimerade css filen som jag gjort med hjälp av gulp.
 
