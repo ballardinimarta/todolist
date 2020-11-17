@@ -1,7 +1,7 @@
 # Todolista #
 
 **Inlämningsuppgift 1 i JavaScript grundkurs**
-
+-----------
 Detta är min första inlämningsuppgift i kursen javascriptgrundkurs som jag har nu. 
 
 ### Uppgiften: ###
