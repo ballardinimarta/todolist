@@ -1,6 +1,6 @@
 # Todolista #
 
-***inlämningsuppgift 1 i JavaScript grundkurs***
+**Inlämningsuppgift 1 i JavaScript grundkurs**
 
 Detta är min första inlämningsuppgift i kursen javascriptgrundkurs som jag har nu. 
 
@@ -12,7 +12,7 @@ Den ska kunna ta bort en todo, checka av en todo, kunna sortera listan av todos 
 
 ### Installation: ###
 
-1. Kör `git clone https://github.com/ballardinimarta/todolist.git``
+1. Kör `git clone https://github.com/ballardinimarta/todolist.git`
 2. Öppna *index.html* i din browser
 
 ### Struktur: ###
