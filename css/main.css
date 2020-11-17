@@ -20,7 +20,7 @@ body {
       @media screen and (max-width: 768px) {
         body #wrapper form {
           width: 95%; } }
-    body #wrapper #newcontent {
+    body #wrapper #newContent {
       padding: 18px;
       width: 80%;
       margin: 3px;
@@ -29,9 +29,9 @@ body {
       border-radius: 2px;
       font-size: 75%; }
       @media screen and (max-width: 768px) {
-        body #wrapper #newcontent {
+        body #wrapper #newContent {
           padding: 12px; } }
-    body #wrapper #addnewcontent {
+    body #wrapper #addNewContent {
       padding: 17px;
       width: 20%;
       background-color: #454545;
@@ -39,7 +39,7 @@ body {
       border-radius: 2px;
       border: none; }
       @media screen and (max-width: 768px) {
-        body #wrapper #addnewcontent {
+        body #wrapper #addNewContent {
           padding: 11px; } }
     body #wrapper #ulWrapper {
       width: 80%;
