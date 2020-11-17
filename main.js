@@ -18,7 +18,7 @@ window.onload = function () {
 
 
 function addItems (content) {
-    let todolist = document.getElementById('myTodoList');
+    let todoList = document.getElementById('myTodoList');
     let inputfield = document.getElementById('newContent');
 
     let li = document.createElement("li");
@@ -32,7 +32,7 @@ function addItems (content) {
         li.innerHTML = content;
         li.className = "listItem";
     
-        todolist.appendChild(li);
+        todoList.appendChild(li);
         li.appendChild(btn);
 
         let todo = new Todo(content, false, false)
