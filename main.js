@@ -17,7 +17,7 @@ window.onload = function () {
     sortButton();
 }
 // en function för att checka som används 3 gånger
-function checkChecked () {
+function checkChecked (todo) {
     if (todo.checked == false) {
         todo.checked = true;
     } else {
@@ -51,7 +51,7 @@ function addItems (content) {
         // eventlistner för att checka av todo om man klickar på li-elementet
         li.addEventListener('click', function() {
             li.classList.toggle("checked");
-            checkChecked();
+            checkChecked(todo);
         })
         // eventlistner för att ta bort ett element om man trycker på krysset
         btn.addEventListener('click', function() {
@@ -59,7 +59,7 @@ function addItems (content) {
 
             let removedItem = btn.parentElement;
             removedItem.classList.toggle("checked");
-            checkChecked();
+            checkChecked(todo);
             removedItem.remove();
             removedItem.removeChild(removedItem.lastChild);
             
@@ -77,7 +77,7 @@ function addItems (content) {
                 todo.removed = false;
 
                 removedItem.classList.toggle("checked");
-                checkChecked();
+                checkChecked(todo);
                 
                 let reverseItem = reverseBtn.parentElement;
                 reverseItem.removeChild(reverseItem.lastChild);
