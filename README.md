@@ -12,8 +12,13 @@ Den ska kunna ta bort en todo, checka av en todo, kunna sortera listan av todos 
 
 ### Installation: ###
 
-1. Kör `git clone https://github.com/ballardinimarta/todolist.git`
-2. Öppna *index.html* i din browser
+1. `git clone https://github.com/ballardinimarta/todolist.git`
+2. `npm install node-sass`
+3. `npm install gulp`
+4. `npm install gulp-sass`
+5. `npm install gulp-csso`
+6. `npm install gulp-rename`
+7. Öppna *index.html* i din browser
 
 ### Struktur: ###
 
