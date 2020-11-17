@@ -16,6 +16,14 @@ window.onload = function () {
     sortButton();
 }
 
+function checkChecked () {
+    if (todo.checked == false) {
+        todo.checked = true;
+    } else {
+        todo.checked = false;
+    }
+}
+
 
 function addItems (content) {
     let todoList = document.getElementById('myTodoList');
@@ -40,42 +48,30 @@ function addItems (content) {
         
         li.addEventListener('click', function() {
             li.classList.toggle("checked");
-            if (todo.checked == false) {
-                todo.checked = true;
-            } else {
-                todo.checked = false;
-            }
+            checkChecked();
         })
         btn.addEventListener('click', function() {
             todo.removed = true;
 
             let removedItem = btn.parentElement;
-
             removedItem.classList.toggle("checked");
-            if (todo.checked == false) {
-                todo.checked = true;
-            } else {
-                todo.checked = false;
-            }
-    
+            checkChecked();
             removedItem.remove();
-
             removedItem.removeChild(removedItem.lastChild);
             
             let reverseBtn = document.createElement("button");
             reverseBtn.innerHTML = "&#8617;";
             reverseBtn.className = "reverseListItem";
+
             removedItem.appendChild(reverseBtn);
     
             removedItems.push(removedItem);
 
             reverseBtn.addEventListener('click', function () {
+                todo.removed = false;
+
                 removedItem.classList.toggle("checked");
-                if (todo.checked == false) {
-                    todo.checked = true;
-                } else {
-                    todo.checked = false;
-                }
+                checkChecked();
                 
                 let reverseItem = reverseBtn.parentElement;
                 reverseItem.removeChild(reverseItem.lastChild);
@@ -83,13 +79,11 @@ function addItems (content) {
                 reverseItem.appendChild(btn);
 
                 reverseItem.classList.remove("removed");
-                todo.removed = false;
 
                 let index = removedItems.indexOf(reverseItem);
                 if (index > -1) {
                     removedItems.splice(index, 1);
                 }
-
                 standardFilter();
             })
 
@@ -160,6 +154,7 @@ function standardFilter () {
 
 function checkedFilter () {
     let lis = document.getElementsByTagName("li");
+
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
         if (!li.classList.contains("checked") || removedItems.includes(li)) {
@@ -174,6 +169,7 @@ function checkedFilter () {
 
 function undoneFilter () {
     let lis = document.getElementsByTagName("li");
+
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
         if (li.classList.contains("checked") || removedItems.includes(li)) {
@@ -187,6 +183,7 @@ function undoneFilter () {
 
 function removedFilter () {
     let lis = document.getElementsByTagName("li");
+    
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
         if (li.classList.contains("listItem") && removedItems.includes(li)) {
@@ -195,11 +192,11 @@ function removedFilter () {
             li.style.display = "none";
         }
     }
-    let todolist = document.getElementById('myTodoList');
+    let todoList = document.getElementById('myTodoList');
     for (let i = 0; i < removedItems.length; i++) {
         removedItem = removedItems[i];
         removedItem.classList.add("removed");
-        todolist.appendChild(removedItem);
+        todoList.appendChild(removedItem);
     }
 }
 
@@ -209,7 +206,7 @@ function sortButton () {
 
 function sortTodos () {
     let todoList = document.getElementById("myTodoList");
-    let lis = todoList.getElementsByTagName("LI");
+    let lis = todoList.getElementsByTagName("li");
     var liArray = Array.from(lis);
 
 
@@ -227,6 +224,7 @@ function sortTodos () {
         todoList.appendChild(sortedLi);
     }       
 }
+
 
 
 
