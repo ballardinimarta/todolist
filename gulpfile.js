@@ -16,6 +16,6 @@ gulp.task('minify', function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('css/dist'))
 
 });

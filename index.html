@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Min todolista för inlämningsuppgift 1 i JavaScript grundkurs">
     <title>Todo-List</title>
 
-    <link rel="stylesheet" href="dist/main.min.css">
+    <link rel="stylesheet" href="css/dist/main.min.css">
     <script src="main.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -14,26 +15,31 @@
     <div id="wrapper">
         <h1>Att göra lista!</h1>
         <form>
-            <input id="newcontent" type="text" placeholder="Ny uppgift som måste göras!" required>
-            <button id="addnewcontent" type="button">Skapa!</button>
+            <input id="newContent" type="text" placeholder="Ny uppgift som måste göras!" required>
+            <button id="addNewContent" type="button">Skapa!</button>
         </form>
         <div id="ulWrapper">
+
             <div id="filter">
+
                 <div id="sort">
                     <span>Sortera</span>
                 </div> 
+
                 <div id= "openMenu">
                     <span>Filtrera</span>
                 </div>
+
                 <div id="dropdownFilter" class="closed">
                     <button type="button" id="standard" class="filterButtons">Standard</button>
                     <button type="button" id="checked" class="filterButtons">Avklarade</button>
                     <button type="button" id="undone" class="filterButtons">Oavslutade</button>
                     <button type="button" id="removed" class="filterButtons">Borttagna</button>
                 </div>
+
             </div>
-            <ul id="myTodoList" class="list">
-            </ul>
+
+            <ul id="myTodoList" class="list"></ul>
         </div>
     </div>  
 </body>
