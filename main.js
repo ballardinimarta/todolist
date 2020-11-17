@@ -1,3 +1,4 @@
+// Skapa en class för mini Todo-objekt
 class Todo{
         constructor(content, checked, removed) {
             this.content = content;
@@ -5,7 +6,7 @@ class Todo{
             this.removed = removed;
         }
 }
-
+// mina globala arrays
 let removedItems = [];
 let todoItems = [];
 
@@ -15,7 +16,7 @@ window.onload = function () {
     filterMenu();
     sortButton();
 }
-
+// en function för att checka som används 3 gånger
 function checkChecked () {
     if (todo.checked == false) {
         todo.checked = true;
@@ -24,7 +25,7 @@ function checkChecked () {
     }
 }
 
-
+// funktionen för att lägga till ett li elemnt i min ul
 function addItems (content) {
     let todoList = document.getElementById('myTodoList');
     let inputfield = document.getElementById('newContent');
@@ -32,6 +33,7 @@ function addItems (content) {
     let li = document.createElement("li");
     let btn = document.createElement("button");
 
+    // lägger allt i en if för att förhindra tomma li element
     if (content != "") {
         btn.innerHTML = "&#10005;";
         btn.type = "button";
@@ -46,10 +48,12 @@ function addItems (content) {
         let todo = new Todo(content, false, false)
         todoItems.push(todo);
         
+        // eventlistner för att checka av todo om man klickar på li-elementet
         li.addEventListener('click', function() {
             li.classList.toggle("checked");
             checkChecked();
         })
+        // eventlistner för att ta bort ett element om man trycker på krysset
         btn.addEventListener('click', function() {
             todo.removed = true;
 
@@ -59,6 +63,7 @@ function addItems (content) {
             removedItem.remove();
             removedItem.removeChild(removedItem.lastChild);
             
+            //Lägg till ny knapp som gör att man kan "reversa" en borttagning av en todo 
             let reverseBtn = document.createElement("button");
             reverseBtn.innerHTML = "&#8617;";
             reverseBtn.className = "reverseListItem";
@@ -67,6 +72,7 @@ function addItems (content) {
     
             removedItems.push(removedItem);
 
+            // eventlistner för nya reverseknappen som gör att todon kommer tillbaka till hur den var innan den blev borttagen
             reverseBtn.addEventListener('click', function () {
                 todo.removed = false;
 
@@ -84,19 +90,23 @@ function addItems (content) {
                 if (index > -1) {
                     removedItems.splice(index, 1);
                 }
+                //Visa standardvyn efter reverse
                 standardFilter();
             })
 
         })
     } else {
+        // om textrutan är tom ska denna alert visas
         alert("Du behöver skriva in något i textrutan för att lägga till en ny uppgift!");
     }
+    // Rensa textrutan efter man lagt till todo
     inputfield.value = "";
     console.log(todoItems);
 
     
 }
 
+// funktion för att lägga till några standard todos för start
 function todoStartSetup () {
     let todoString = ["handla", "tvätta", "göra läxor", "gå till frisören"];
     for (let i = 0; i < todoString.length; i++) {
@@ -105,13 +115,13 @@ function todoStartSetup () {
     }
 }
 
-
+// funktion för att lägga till nya todos från input
 function addListItemsOnClick () {
     let addNewContentBtn = document.getElementById('addNewContent');
     addNewContentBtn.addEventListener('click', () => { addItems(document.getElementById('newContent').value); })   
 }
 
-
+// funktion för filtrering
 function filterMenu() {
     let filterBtn = document.getElementById('openMenu');
     let standardBtn = document.getElementById("standard");
@@ -119,6 +129,7 @@ function filterMenu() {
     let undoneBtn = document.getElementById("undone");
     let removedBtn = document.getElementById("removed");
 
+    // eventlistner för att skapa en osynlig menu tills knapptryck
     filterBtn.addEventListener('click', function () {
         let openBtn = document.getElementById('dropdownFilter');
         if (openBtn.className == 'closed') {
@@ -128,6 +139,7 @@ function filterMenu() {
         }
     })
 
+    // lägga till respektive eventlistner för alla olika knappar
     standardBtn.addEventListener('click', standardFilter)
 
     checkedBtn.addEventListener('click', checkedFilter)
@@ -138,6 +150,8 @@ function filterMenu() {
 
 
 }
+
+// visa alla avklarade och oavklarade dvs "standardvyn"
 function standardFilter () {   
     let lis = document.getElementsByTagName("li");
     
@@ -152,6 +166,7 @@ function standardFilter () {
     }
 }
 
+// visa alla avklarade
 function checkedFilter () {
     let lis = document.getElementsByTagName("li");
 
@@ -167,6 +182,7 @@ function checkedFilter () {
     }
 }
 
+// visa alla oavklarade
 function undoneFilter () {
     let lis = document.getElementsByTagName("li");
 
@@ -181,9 +197,10 @@ function undoneFilter () {
     }
 }
 
+// visa alla borttagna
 function removedFilter () {
     let lis = document.getElementsByTagName("li");
-    
+
     for (let i = 0; i < lis.length; i++) {
         let li = lis[i];
         if (li.classList.contains("listItem") && removedItems.includes(li)) {
@@ -200,10 +217,12 @@ function removedFilter () {
     }
 }
 
+//lägg till eventlistner för "sortera-knappen"
 function sortButton () {
     document.getElementById("sort").addEventListener('click', sortTodos);
 }
 
+// funktionen för att sortera alla todos i bokstavsordning med hjälp av ".sort();"
 function sortTodos () {
     let todoList = document.getElementById("myTodoList");
     let lis = todoList.getElementsByTagName("li");
@@ -217,8 +236,10 @@ function sortTodos () {
         if (x > y) {return 1;}
         return 0;
       });
+    // töm html
     todoList.innerHTML = " ";
     
+    // lägg till i sorterad ording istället
     for (let i = 0; i <liArray.length; i++) {
         let sortedLi = liArray[i];
         todoList.appendChild(sortedLi);
